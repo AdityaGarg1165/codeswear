@@ -1,25 +1,47 @@
 import { useState } from 'react';
+import {addDoc, collection, getFirestore} from 'firebase/firestore'
 import { LockClosedIcon } from '@heroicons/react/solid'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {app} from './firebase'
+import * as CryptoJS from 'crypto-js'
+import {useCollectionData} from 'react-firebase-hooks/firestore'
 
 export default function Example() {
+  const db = getFirestore(app)
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
+  const userscollection = collection(db,"users")
+  const [data] = useCollectionData(userscollection)
   const login = async (e) => {
     e.preventDefault();
-    const formemail = await email
-    const formpassword = await password
-    const data = {"email":formemail,"password":formpassword}
-    const post = await fetch(`/api/signup`,{
-      method:"post",
-      body:{"email":formemail,"password":formpassword}
-    })
-    console.log(data)
+    
+    const user = data.filter(x => x.email === email)
+    try{
 
-      let res = await post.json()
-      console.log(res)
-      toast.success(res.message, {
+      if(user[0].email){
+    
+        toast.error("User Already Exists", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        
+      }
+  
+        
+      
+    }
+    catch{
+      addDoc(userscollection,{
+        email:email,
+        password:CryptoJS.AES.encrypt(password,'khotakhota').toString()
+      })
+      toast.success("Account created successfully", {
         position: "top-left",
         autoClose: 5000,
         hideProgressBar: false,
@@ -27,8 +49,9 @@ export default function Example() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
-        
+      });
+      
+    }
   }
   return (
     <>

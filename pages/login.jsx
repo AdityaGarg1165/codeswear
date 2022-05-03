@@ -5,57 +5,46 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import jsonwebtoken from 'jsonwebtoken';
 const jwt = require('jsonwebtoken')
+import {app} from './firebase'
+import * as CryptoJS from 'crypto-js'
+import {useCollectionData} from 'react-firebase-hooks/firestore'
+import {addDoc, collection, getFirestore} from 'firebase/firestore'
 import Router from 'next/router';
 
 export default function Login() {
+  const db = getFirestore(app)
   const [email,setEmail] = useState('')
+  const userscollection = collection(db,"users")
+  const [data] = useCollectionData(userscollection)
   const [password,setPassword] = useState('')
-  const login = async (e) => {
-    e.preventDefault();
-    const formemail = await email
-    const formpassword = await password
-    const data = {formemail,formpassword}
-    const post = await fetch(`/api/login`,{
-      method:"post",
-      headers:{
-        "Access-Control-Allow-Origin" : "*", 
-        "Access-Control-Allow-Credentials" : true 
-      },
-      body:{"email":formemail,"password":formpassword}
-    })
 
-      let res = await post.json()
-      setTimeout(()=>{
-          window.location.href = "/"
-      },3000)
-      if(res.success === true){
-          const jwt = await jsonwebtoken.sign(data,'khotakey')
-          localStorage.setItem('jwt',jwt)
-        }
-      if(!res.success){
-          toast.error(res.message, {
-            position: "top-left",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });
-            
-        }
-        else{
-            
-            toast.success(res.message, {
-              position: "top-left",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              });
+  const login = async (e) => {
+    e.preventDefault()
+    const user = data.filter(x => x.email === email)
+    if(user[0].email){
+      if(CryptoJS.AES.decrypt(user[0].password,'khotakhota').toString(CryptoJS.enc.Utf8) === password){
+        toast.success("Login successfull", {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+        
       }
+
+    }
+
+
+
+      // setTimeout(()=>{
+      //     window.location.href = "/"
+      // },3000)
+  
+
+            
         
   }
   return (
