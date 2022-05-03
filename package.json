@@ -1,0 +1,31 @@
+{
+  "name": "codeswear",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "crypto-js": "^4.1.1",
+    "cryptojs": "^2.5.3",
+    "heroicons": "^1.0.6",
+    "jsonwebtoken": "^8.5.1",
+    "mogoose": "^0.0.1-security",
+    "mongoose": "^6.3.1",
+    "next": "12.1.5",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-toastify": "^8.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.6",
+    "eslint": "8.14.0",
+    "eslint-config-next": "12.1.5",
+    "postcss": "^8.4.13",
+    "tailwindcss": "^3.0.24"
+  }
+}
