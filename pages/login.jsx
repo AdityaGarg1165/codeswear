@@ -21,7 +21,8 @@ export default function Login() {
         "Access-Control-Allow-Origin" : "*", 
         "Access-Control-Allow-Credentials" : true 
       },
-      body:JSON.stringify(data)})
+      body:{"email":formemail,"password":formpassword}
+    })
 
       let res = await post.json()
       setTimeout(()=>{

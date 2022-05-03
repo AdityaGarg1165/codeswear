@@ -2,13 +2,13 @@ const mongo = require('mongoose')
 const User = require('./User')
 const CryptoJS = require("crypto-js")
 export default async function handler(req, res) {
-  const data = JSON.parse(req.body)
+  const data = req.body
   console.log(data)
-  const user = await User.findOne({"email":data['formemail']})
+  const user = await User.findOne({"email":data['email']})
 
       
       if(user){
-        if(user.email === data.formemail && data.formpassword === CryptoJS.AES.decrypt(user.password,'khotakhota').toString(CryptoJS.enc.Utf8)){
+        if(user.email === data.email && data.password === CryptoJS.AES.decrypt(user.password,'khotakhota').toString(CryptoJS.enc.Utf8)){
           res.status(200).json({"success":true,"message":"Login Succesfull"})
         }
         

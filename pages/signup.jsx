@@ -13,7 +13,8 @@ export default function Example() {
     const data = {formemail,formpassword}
     const post = await fetch(`/api/signup`,{
       method:"post",
-      body:JSON.stringify(data)})
+      body:{"email":formemail,"password":formpassword}
+    })
 
       let res = await post.json()
       console.log(res)
