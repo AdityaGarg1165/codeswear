@@ -15,7 +15,7 @@ export default function Login() {
     const formemail = await email
     const formpassword = await password
     const data = {formemail,formpassword}
-    const post = await fetch(`http://localhost:3000/api/login`,{
+    const post = await fetch(`/api/login`,{
       method:"POST",
       body:JSON.stringify(data)})
 

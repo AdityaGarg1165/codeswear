@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -12,6 +13,8 @@
     "@heroicons/react": "^1.0.6",
     "crypto-js": "^4.1.1",
     "cryptojs": "^2.5.3",
+    "firebase-cli": "^1.2.0",
+    "firebase-tools": "^10.7.2",
     "heroicons": "^1.0.6",
     "jsonwebtoken": "^8.5.1",
     "mogoose": "^0.0.1-security",
