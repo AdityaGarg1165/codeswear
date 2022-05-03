@@ -10,11 +10,12 @@ export default function Example() {
     e.preventDefault();
     const formemail = await email
     const formpassword = await password
-    const data = {formemail,formpassword}
+    const data = {"email":formemail,"password":formpassword}
     const post = await fetch(`/api/signup`,{
       method:"post",
       body:{"email":formemail,"password":formpassword}
     })
+    console.log(data)
 
       let res = await post.json()
       console.log(res)
