@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import {app} from './firebase'
 import {collection, getFirestore, limit, query} from 'firebase/firestore'
@@ -16,7 +16,8 @@ export default function Home() {
   <div className="container ml-44 px-5 py-24 mx-auto">
     <div className="flex flex-wrap -m-4">
       {data && data.map((item)=>(
-        <div key={item.id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
+      <Link key={item.id} href={`/product/${item.name}`}>
+        <div className="lg:w-1/4 md:w-1/2 p-4 w-full cursor-pointer">
         <a className="block relative h-48 rounded overflow-hidden">
           <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={item.photourl}/>
         </a>
@@ -26,6 +27,7 @@ export default function Home() {
           <p className="mt-1">{item.price}</p>
         </div>
       </div>
+        </Link>
         ))}
 
 
