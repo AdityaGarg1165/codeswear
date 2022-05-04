@@ -21,7 +21,7 @@ export default function Navbar() {
 
       const token = localStorage.getItem('jwt')
       const data = jwt.decode(token)
-      const email = data.formemail
+      const email = data.email
       set(email.split('@')[0])
     }
     catch{
@@ -33,17 +33,17 @@ export default function Navbar() {
     <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link href={'/'}>
       <a className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-        <span className="ml-3 text-xl text-black ">Codeswear.com</span>
+        <span className="ml-3 text-4xl text-xl text-black ">Codeswear.com</span>
       </a>
         </Link>
-      <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-        <a className="mr-5 hover:text-white">Tshirt</a>
-        <a className="mr-5 hover:text-white">Mugs</a>
-        <a className="mr-5 hover:text-white">Hoodies</a>
-        <a className="mr-5 hover:text-white">Stickers</a>
-        <a className="mr-5 hover:text-white">{name ? 'Welcome' + ' ' + '@' + name : null}</a>
+      <nav className="md:ml-8 flex flex-wrap items-center text-base justify-center">
+        <a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Tshirt</a>
+        <a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Mugs</a>
+        <a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Hoodies</a>
+        <a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Stickers</a>
+        <a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">{name ? 'Welcome' + ' ' + '@' + name : null}</a>
       </nav>
-      <button onClick={handleclick} className="inline-flex items-center border-0 py-1 px-3 focus:outline-none bg-indigo-600 mx-12 rounded text-white mt-4 md:mt-0">{name ? 'Logout' : 'Login'}
+      <button onClick={handleclick} className="inline-flex ml-auto items-center border-0 py-1 px-3 focus:outline-none bg-indigo-600 mx-12 rounded text-white mt-4 md:mt-0">{name ? 'Logout' : 'Login'}
         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
           <path d="M5 12h14M12 5l7 7-7 7"></path>
         </svg>

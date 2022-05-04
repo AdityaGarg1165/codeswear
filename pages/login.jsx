@@ -21,9 +21,42 @@ export default function Login() {
   const login = async (e) => {
     e.preventDefault()
     const user = data.filter(x => x.email === email)
-    if(user[0].email){
-      if(CryptoJS.AES.decrypt(user[0].password,'khotakhota').toString(CryptoJS.enc.Utf8) === password){
-        toast.success("Login successfull", {
+    try{
+      if(user[0].email){
+        if(CryptoJS.AES.decrypt(user[0].password,'khotakhota').toString(CryptoJS.enc.Utf8) === password && user[0].email){
+          setTimeout(()=>{
+              window.location.href = "/"
+          },3000)
+          localStorage.setItem('jwt',jwt.sign({email:email,password:password},'khotakey'))
+          toast.success("Login successfull", {
+            position: "top-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+          
+        }
+        else{
+
+          toast.error("Invalid Credentials", {
+            position: "top-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      }
+        
+      }
+      catch{
+
+        toast.error("Invalid Credentials", {
           position: "top-left",
           autoClose: 5000,
           hideProgressBar: false,
@@ -31,17 +64,15 @@ export default function Login() {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
+        });
         
       }
+        
+    
+    
 
-    }
 
 
-
-      // setTimeout(()=>{
-      //     window.location.href = "/"
-      // },3000)
   
 
             
