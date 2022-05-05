@@ -104,12 +104,12 @@ export default function Product() {
           <a href="https://rzp.io/l/DEKDo4ozW">
           <button className="flex ml-auto ml-32 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Buy Now</button>
           </a>
-          <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={()=>{
+          <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={async()=>{
             const cartdata = localStorage.getItem('cart')
             const cart = []
             cart.push(cartdata)
             cart.push(name)
-            localStorage.setItem('cart',cart)
+            await localStorage.setItem('cart',cart)
 
 
           }}>Add to Cart</button>

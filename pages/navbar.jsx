@@ -7,20 +7,34 @@ import Router from 'next/router'
 const jwt = require('jsonwebtoken')
 
 export default function Navbar() {
+  let [arr,setarr] = useState('')
   const [cdat,setc] = useState([])
   const cartdata = []
   useEffect(()=>{
-    const existingitems = localStorage.getItem('cart')
-    cartdata.push(existingitems)
+    try{
+      
+      const existingitems = localStorage.getItem('cart')
+      const splited = existingitems.split(',')
+      splited.map((item)=>{
+        
+        cartdata.push(item)
+      })
+      setc(cartdata)
+    }
+    catch{
+      const existingitems = localStorage.getItem('cart')
+      cartdata.push(existingitems)
+      
+    }
     setc(cartdata)
-    console.log(cartdata)
-  },[])
+  },[arr])
   const [name,set] = useState(null)
   const cartref = useRef()
   const toggle = () => {
     if(cartref.current.classList.contains('translate-x-full')){
       cartref.current.classList.remove('translate-x-full')
       
+      setarr(Math.random().toString())
     }
     
     
@@ -28,6 +42,7 @@ export default function Navbar() {
   }
   const cross = () => {
     cartref.current.classList.add('translate-x-full')
+    setarr(Math.random().toString())
   }
   const handleclick = () =>{
     if(name === null){
@@ -37,20 +52,20 @@ export default function Navbar() {
       localStorage.removeItem('jwt')
       set(null)
     }
-
+    
   }
   useEffect(()=>{
     try{
-
+      
       const token = localStorage.getItem('jwt')
       const data = jwt.decode(token)
       const email = data.email
       set(email.split('@')[0])
     }
     catch{
-
+      
     }
-    },[])
+  },[])
   return (
     <header id='' className="text-black bg-white shadow-xl body-font">
     <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -77,7 +92,7 @@ export default function Navbar() {
         <span className='absolute top-2 right-2'><AiFillCloseCircle onClick={cross} className='cursor-pointer' size={20}/></span>
         <ol>
           {cdat && cdat.map((item)=>(
-
+            
             <li key={'item.id'}>
               <span>{item}</span>
           </li>
