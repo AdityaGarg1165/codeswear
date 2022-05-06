@@ -4,6 +4,7 @@ import {AiFillCloseCircle} from 'react-icons/ai'
 import Link from 'next/link'
 import { useEffect,useState,useRef } from 'react'
 import Router from 'next/router'
+import Image from 'next/image'
 const jwt = require('jsonwebtoken')
 
 export default function Navbar() {
@@ -70,16 +71,18 @@ export default function Navbar() {
     <header id='' className="text-black bg-white shadow-xl body-font">
     <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link href={'/'}>
-      <a className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-        <span className="ml-3 text-4xl text-xl text-black ">Codeswear.com</span>
+      <a className="flex title-font font-small items-center text-white mb-4 md:mb-0">
+        <Image src={'/logo1.png'} width="200" height="70"></Image>
       </a>
         </Link>
       <nav className="md:ml-8 flex flex-wrap items-center text-base justify-center">
-        <a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Tshirt</a>
-        <a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Mugs</a>
-        <a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Hoodies</a>
-        <a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Stickers</a>
-        <a className="mr-5 ml-auto hover:fill-indigo-600 font-bold cursor-pointer">{name ? 'Welcome' + ' ' + '@' + name : null}</a>
+        <Link href = {'/Tshirts'}><a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Tshirt</a></Link>
+        <Link href = {'/Hoodies'}><a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Hoodies</a></Link>
+        <Link href = {'/Mugs'}><a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Mugs</a></Link>
+        <Link href = {'/Shoes'}><a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Shoes</a></Link>
+        <Link href = {'/about'}><a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">About us</a></Link>
+
+        {/* <a className="mr-5 ml-auto hover:fill-indigo-600 font-bold cursor-pointer">{name ? 'Welcome' + ' ' + '@' + name : null}</a> */}
       </nav>
       <button onClick={handleclick} className="inline-flex ml-auto items-center border-0 py-1 px-3 focus:outline-none bg-indigo-600 mx-12 rounded text-white mt-4 md:mt-0">{name ? 'Logout' : 'Login'}
         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">

@@ -1,6 +1,4 @@
 import React from 'react'
-import Script from 'next/script'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { collection, getFirestore } from 'firebase/firestore'
@@ -8,55 +6,21 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { app } from '../firebase'
 import { data } from 'autoprefixer'
 import { useEffect } from 'react'
+import Link from 'next/link'
 
 export default function Product() {
     const db = getFirestore(app)
     const products = collection(db,"hpducts")
     const Router = useRouter()
     const [name,setname] = useState('')
+   
     const [url,seturl] = useState('')
     const [price,setprice] = useState('')
     const {slug} = Router.query
-    let subtotal = 1000;
-    let amount = "1000.0";
-    const oid = Math.floor(Math.random() * Date.now())
     const [data] = useCollectionData(products)
-    
-    const initiate = (price)=>{
-      var options = {
-        "key": "rzp_live_bdVlXKdSgO7Dw5", // Enter the Key ID generated from the Dashboard
-        "key_secret": "GIs6m1QFT8qo3NFWOXXC9OoN", // Enter the Key ID generated from the Dashboard
-        "amount": price, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        "currency": "INR",
-        "name": "Codewear.com",
-        "description": "Pay",
-        "image": "https://example.com/your_logo",
-        // "order_id": "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        "handler": function (response){
-            alert(response.razorpay_payment_id);
-            alert(response.razorpay_order_id);
-            alert(response.razorpay_signature)
-        },
-        "prefill": {
-            "name": "",
-            "email": "",
-            "contact": ""
-        },
-        "notes": {
-            "address": ""
-        },
-        "theme": {
-            "color": "#3399cc"
-        }
-    };
-      const pay = new window.Razorpay(options)
-      pay.open()
+    const checkServiceability = ()=>{
+     
     }
-
-        
-    
-    
-
     useEffect(()=>{
         
         if(Router.isReady){
@@ -71,10 +35,6 @@ export default function Product() {
     },[data])
         return (
             <div>
-               <Script crossOrigin='' src='https://checkout.razorpay.com/v1/checkout.js'></Script>
-              <Head>
-              <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
-              </Head>
                 <section className="text-gray-600 body-font overflow-hidden">
   <div className="container px-5 py-24 mx-auto">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -146,7 +106,9 @@ export default function Product() {
         </div>
         <div className="flex">
           <span className="title-font font-medium text-2xl text-gray-900">{price}</span>
-          <button className="flex ml-auto ml-32 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={()=>{initiate(price)}}>Buy Now</button>
+          <a href="https://rzp.io/l/DEKDo4ozW">
+          <Link href={'/checkout'}><button className="flex ml-auto ml-32 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Checkout</button></Link>
+          </a>
           <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={async()=>{
             const cartdata = localStorage.getItem('cart')
             const cart = []
@@ -158,8 +120,14 @@ export default function Product() {
           }}>Add to Cart</button>
           <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
           </button>
+          
+          
         </div>
+       
       </div>
+      
+        
+      
     </div>
   </div>
 </section>
