@@ -13,6 +13,34 @@ export default function Product() {
     const products = collection(db,"hpducts")
     const Router = useRouter()
     const [name,setname] = useState('')
+    const initiate = ()=>{
+      var options = {
+          "key": "rzp_live_dGbruH5EDyqumR", // Enter the Key ID generated from the Dashboard
+          "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+          "currency": "INR",
+          "name": "Acme Corp",
+          "description": "Test Transaction",
+          "image": "http://localhost:3000/logo1.png",
+          "handler": function (response){
+              alert(response.razorpay_payment_id);
+              alert(response.razorpay_order_id);
+              alert(response.razorpay_signature)
+          },
+          "prefill": {
+              "name": "",
+              "email": "",
+              "contact": ""
+          },
+          "notes": {
+              "address": ""
+          },
+          "theme": {
+              "color": "#00BAF2"
+          }
+      };
+      const pay = new window.Razorpay(options)
+      pay.open()
+  }
    
     const [url,seturl] = useState('')
     const [price,setprice] = useState('')
@@ -105,16 +133,31 @@ export default function Product() {
           </div>
         </div>
         <div className="flex">
-          <span className="title-font font-medium text-2xl text-gray-900">{price}</span>
+          <span className="title-font font-medium text-2xl text-gray-900">₹{price}</span>
           <a href="https://rzp.io/l/DEKDo4ozW">
           <Link href={'/checkout'}><button className="flex ml-auto ml-32 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Checkout</button></Link>
           </a>
           <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={async()=>{
             const cartdata = localStorage.getItem('cart')
-            const cart = []
-            cart.push(cartdata)
-            cart.push(name)
-            await localStorage.setItem('cart',cart)
+            const pricedata = localStorage.getItem('price')
+            if(pricedata!=null){
+              const cart = []
+              cart.push(cartdata)
+              cart.push(name)
+              console.log(parseInt(parseInt(price) + parseInt(pricedata)).toString())
+              localStorage.setItem('cart',cart)
+              localStorage.setItem('price',parseInt(parseInt(price) + parseInt(pricedata)).toString())
+            }
+            else{
+              const cart = []
+              cart.push(cartdata)
+              cart.push(name)
+              console.log(parseInt(parseInt(price) + parseInt(pricedata)).toString())
+              localStorage.setItem('cart',cart)
+              localStorage.setItem('price',parseInt(parseInt(price) + 0).toString())
+            }
+
+            
 
 
           }}>Add to Cart</button>

@@ -1,5 +1,5 @@
 import React from 'react'
-import {FaShoppingCart} from 'react-icons/fa'
+import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import Link from 'next/link'
 import { useEffect,useState,useRef } from 'react'
@@ -11,11 +11,16 @@ export default function Navbar() {
   let [arr,setarr] = useState('')
   const [cdat,setc] = useState([])
   const cartdata = []
+  const pricedata = []
+  let [subtotal,settot] = useState(0);
   useEffect(()=>{
+    // localStorage.setItem('price',"0")
     try{
       
       const existingitems = localStorage.getItem('cart')
       const splited = existingitems.split(',')
+      const existingprice = localStorage.getItem('price')
+      settot(existingprice)
       splited.map((item)=>{
         
         cartdata.push(item)
@@ -31,9 +36,11 @@ export default function Navbar() {
   },[arr])
   const [name,set] = useState(null)
   const cartref = useRef()
+  useEffect(()=>{toggle()},[])
   const toggle = () => {
     if(cartref.current.classList.contains('translate-x-full')){
       cartref.current.classList.remove('translate-x-full')
+      cartref.current.classList.remove('hidden')
       
       setarr(Math.random().toString())
     }
@@ -43,6 +50,7 @@ export default function Navbar() {
   }
   const cross = () => {
     cartref.current.classList.add('translate-x-full')
+    cartref.current.classList.add('hidden')
     setarr(Math.random().toString())
   }
   const handleclick = () =>{
@@ -89,7 +97,7 @@ export default function Navbar() {
           <path d="M5 12h14M12 5l7 7-7 7"></path>
         </svg>
       </button>
-      <FaShoppingCart onClick={toggle} className='text-3xl cursor-pointer' />
+      <AiOutlineShoppingCart onClick={toggle} className='text-3xl cursor-pointer -mt-8 md:mt-0' />
       <div ref={cartref} className="cart transition-transform translate-x-full transform bg-indigo-300 absolute top-0 right-0 p-10">
         <h2 className='font-bold text-xl'>Shopping Cart</h2>
         <span className='absolute top-2 right-2'><AiFillCloseCircle onClick={cross} className='cursor-pointer' size={20}/></span>
@@ -100,6 +108,10 @@ export default function Navbar() {
               <span>{item}</span>
           </li>
             ))}
+            <h1 className='font-bold'>Subtotal:{subtotal}</h1>
+            <Link href={'/checkout'}>
+            <button className='bg-indigo-600 rounded-sm text-white w-28 h-8'>Checkout</button>
+            </Link>
         </ol>
       </div>
     </div>
