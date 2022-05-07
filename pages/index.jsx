@@ -1,4 +1,7 @@
 import Link from 'next/link'
+import {FaTshirt} from 'react-icons/fa'
+import {MdOutlineDeliveryDining} from 'react-icons/md'
+import {AiFillDollarCircle} from 'react-icons/ai'
 import styles from '../styles/Home.module.css'
 import {app} from './firebase'
 import {collection, getFirestore, limit, query} from 'firebase/firestore'
@@ -24,7 +27,7 @@ export default function Home() {
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">{item.cat}</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">{item.name}</h2>
-          <p className="mt-1">{item.price}</p>
+          <p className="mt-1">₹{item.price}</p>
         </div>
       </div>
         </Link>
@@ -32,6 +35,40 @@ export default function Home() {
 
 
     
+    </div>
+  </div>
+</section>
+<section className="text-gray-600 body-font">
+  <div className="container px-5 py-24 mx-auto">
+    <div className="flex flex-wrap -m-4">
+     
+      <div className="xl:w-1/3 md:w-1/2 p-4">
+        <div className="border border-gray-200 p-6 rounded-lg">
+          <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+          <FaTshirt/>
+          </div>
+          <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Premium Tshirts</h2>
+          <p className="leading-relaxed text-base">We have a variety of Premium tshirts</p>
+        </div>
+      </div>
+      <div className="xl:w-1/3 md:w-1/2 p-4">
+        <div className="border border-gray-200 p-6 rounded-lg">
+          <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+          <MdOutlineDeliveryDining></MdOutlineDeliveryDining>
+          </div>
+          <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Super fast delivery</h2>
+          <p className="leading-relaxed text-base">We provide super fast delivery all over india</p>
+        </div>
+      </div>
+      <div className="xl:w-1/3 md:w-1/2 p-4">
+        <div className="border border-gray-200 p-6 rounded-lg">
+          <div className="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+          <AiFillDollarCircle></AiFillDollarCircle>
+          </div>
+          <h2 className="text-lg text-gray-900 font-medium title-font mb-2">Exciting offers</h2>
+          <p className="leading-relaxed text-base">We provide exciting offers</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

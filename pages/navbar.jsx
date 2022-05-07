@@ -2,9 +2,10 @@ import React from 'react'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import Link from 'next/link'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect,useState,useRef } from 'react'
 import Router from 'next/router'
-import Image from 'next/image'
 const jwt = require('jsonwebtoken')
 
 export default function Navbar() {
@@ -80,7 +81,7 @@ export default function Navbar() {
     <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link href={'/'}>
       <a className="flex title-font font-small items-center text-white mb-4 md:mb-0">
-        <Image src={'/logo1.png'} width="200" height="70"></Image>
+        <img src={'/logo1.png'} width="200" height="70"></img>
       </a>
         </Link>
       <nav className="md:ml-8 flex flex-wrap items-center text-base justify-center">
