@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import {refreshcart} from '../navbar'
 import { collection, getFirestore } from 'firebase/firestore'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { app } from '../firebase'
@@ -8,7 +9,7 @@ import { data } from 'autoprefixer'
 import { useEffect } from 'react'
 import Link from 'next/link'
 
-export default function Product() {
+export default function Product({update}) {
     const db = getFirestore(app)
     const products = collection(db,"hpducts")
     const Router = useRouter()
@@ -142,11 +143,14 @@ export default function Product() {
               cart.push(cartdata)
               cart.push(name)
               console.log(parseInt(parseInt(price) + parseInt(pricedata)).toString())
+              refreshcart()
               localStorage.setItem('cart',cart)
               localStorage.setItem('price',parseInt(parseInt(price) + parseInt(pricedata)).toString())
+              update(Math.random().toString())
             }
             else{
               const cart = []
+              update(Math.random().toString())
               cart.push(cartdata)
               cart.push(name)
               console.log(parseInt(parseInt(price) + parseInt(pricedata)).toString())

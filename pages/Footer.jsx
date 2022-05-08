@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 const Footer =() =>{
     return(
        <div><footer className="text-gray-600 body-font">

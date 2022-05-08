@@ -7,34 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect,useState,useRef } from 'react'
 import Router from 'next/router'
 const jwt = require('jsonwebtoken')
-
-export default function Navbar() {
-  let [arr,setarr] = useState('')
-  const [cdat,setc] = useState([])
-  const cartdata = []
-  const pricedata = []
-  let [subtotal,settot] = useState(0);
-  useEffect(()=>{
-    // localStorage.setItem('price',"0")
-    try{
-      
-      const existingitems = localStorage.getItem('cart')
-      const splited = existingitems.split(',')
-      const existingprice = localStorage.getItem('price')
-      settot(existingprice)
-      splited.map((item)=>{
-        
-        cartdata.push(item)
-      })
-      setc(cartdata)
-    }
-    catch{
-      const existingitems = localStorage.getItem('cart')
-      cartdata.push(existingitems)
-      
-    }
-    setc(cartdata)
-  },[arr])
+let refresh = []
+export default function Navbar({update,cdat,subtotal}) {
+  
   const [name,set] = useState(null)
   const cartref = useRef()
   useEffect(()=>{toggle()},[])
@@ -42,8 +17,8 @@ export default function Navbar() {
     if(cartref.current.classList.contains('translate-x-full')){
       cartref.current.classList.remove('translate-x-full')
       cartref.current.classList.remove('hidden')
+      update(Math.random().toString())
       
-      setarr(Math.random().toString())
     }
     
     
@@ -52,7 +27,7 @@ export default function Navbar() {
   const cross = () => {
     cartref.current.classList.add('translate-x-full')
     cartref.current.classList.add('hidden')
-    setarr(Math.random().toString())
+    update(Math.random().toString())
   }
   const handleclick = () =>{
     if(name === null){
@@ -113,9 +88,17 @@ export default function Navbar() {
             <Link href={'/checkout'}>
             <button className='bg-indigo-600 rounded-sm text-white w-28 h-8'>Checkout</button>
             </Link>
+            <button className='bg-indigo-600 rounded-sm text-white w-28 h-8 ml-2' onClick={()=>{
+                localStorage.removeItem('cart')
+                update(Math.random().toString())
+              localStorage.removeItem('price')
+            }}>Clear cart</button>
         </ol>
       </div>
     </div>
   </header>
   )
+}
+export function refreshcart(){
+  refresh.push(Math.random().toString())
 }
