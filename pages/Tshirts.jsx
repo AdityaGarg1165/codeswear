@@ -22,7 +22,7 @@ const Tshirts = () => {
     {data && data.map((item)=>(
       <Link key={item.id} href={`product/${item.Name}`}><div className="lg:w-1/4 md:w-1/2 p-4 w-full shadow-lg cursor-pointer">
         <a className="block relative  rounded overflow-hidden">
-          <img alt="ecommerce" className="object-cover object-center w-full h-full block" src={item.photourl}></img>
+          <img alt="ecommerce" className="object-cover object-center w-full h-full block animate-[load_2s_ease-in-out]" src={item.photourl}></img>
         </a>
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>

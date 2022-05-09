@@ -52,19 +52,19 @@ export default function Navbar({update,cdat,subtotal}) {
     }
   },[])
   return (
-    <header id='' className="text-black bg-white shadow-xl body-font">
+    <header id='' className="text-black animate-[load_2s_ease-in-out] bg-white shadow-xl body-font">
     <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link href={'/'}>
       <a className="flex title-font font-small items-center text-white mb-4 md:mb-0">
-        <img src={'/logo1.png'} width="200" height="70"></img>
+        <img src={'/logo.png'} className='-mt-4' width="200" height="70"></img>
       </a>
         </Link>
       <nav className="md:ml-8 flex flex-wrap items-center text-base justify-center">
-        <Link href = {'/Tshirts'}><a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Tshirt</a></Link>
-        <Link href = {'/Hoodies'}><a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Hoodies</a></Link>
-        <Link href = {'/Mugs'}><a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Mugs</a></Link>
-        <Link href = {'/Shoes'}><a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">Shoes</a></Link>
-        <Link href = {'/about'}><a className="mr-5 hover:fill-indigo-600 font-bold cursor-pointer">About us</a></Link>
+        <Link href = {'/Tshirts'}><a className="mr-5 hover:text-slate-600 font-bold cursor-pointer">Tshirt</a></Link>
+        <Link href = {'/Hoodies'}><a className="mr-5 hover:text-slate-600 font-bold cursor-pointer">Hoodies</a></Link>
+        <Link href = {'/Mugs'}><a className="mr-5 hover:text-slate-600 font-bold cursor-pointer">Mugs</a></Link>
+        <Link href = {'/Shoes'}><a className="mr-5 hover:text-slate-600 font-bold cursor-pointer">Shoes</a></Link>
+        <Link href = {'/about'}><a className="mr-5 hover:text-slate-600 font-bold cursor-pointer">About us</a></Link>
 
         {/* <a className="mr-5 ml-auto hover:fill-indigo-600 font-bold cursor-pointer">{name ? 'Welcome' + ' ' + '@' + name : null}</a> */}
       </nav>

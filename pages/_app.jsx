@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import Topload from './toploader'
 import Navbar from './navbar'
 import Footer from './footer'
 import { useState,useEffect } from 'react'
@@ -6,7 +7,9 @@ import { useState,useEffect } from 'react'
 function MyApp({ Component, pageProps }) {
   const [up,sp] = useState('')
   let [arr,setarr] = useState('')
+  const [top,uptop]= useState('')
   const [cdat,setc] = useState([])
+  const [time,settime] = useState('')
   const [cartupdate,setup] = useState([])
   const cartdata = []
   const pricedata = []
@@ -39,8 +42,9 @@ function MyApp({ Component, pageProps }) {
     setc(cartdata)
   },[arr,cartupdate])
   return <>
+  <Topload animation={top} />
   <Navbar subtotal={subtotal} update={setup} cdat={cdat}/>
-  <Component update={setup}{...pageProps} />
+  <Component updateT={uptop} time={settime} update={setup}{...pageProps} />
   <Footer></Footer>
   </>
 }

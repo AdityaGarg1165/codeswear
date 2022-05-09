@@ -8,6 +8,11 @@ module.exports = {
   theme: {
     screens: {
       sm: '640px',
+      xsm: '637px',
+      xxsm: '547px',
+      xxxsm: '531px',
+      xxxxsm: '515px',
+      xxxxxsm: '481px',
       md: '768px',
       lg: '1024px',
       xl: '1280px',
@@ -109,6 +114,7 @@ module.exports = {
       80: '20rem',
       96: '24rem',
       110: '29rem',
+      "fullp":'100%'
     },
     animation: {
       none: 'none',
@@ -565,15 +571,33 @@ module.exports = {
           transform: 'rotate(360deg)',
         },
       },
+      topload:{
+        from:{
+          width:'10%'
+        },
+        to:{
+          width:'100%'
+      }
+      },
       ping: {
         '75%, 100%': {
           transform: 'scale(2)',
           opacity: '0',
         },
       },
-      pulse: {
+      load: {
+        '0%':{
+          transform:'translateY(-100%)',
+          opacity:'.1'
+
+        },
         '50%': {
           opacity: '.5',
+        },
+        '100%':{
+          transform:'translateY(10%)',
+          opacity:'1'
+
         },
       },
       bounce: {

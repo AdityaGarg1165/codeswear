@@ -5,7 +5,7 @@ const Footer =() =>{
        <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col" bis_skin_checked="1">
          <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left" bis_skin_checked="1">
            <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-             <img src="/logo1.png" alt="" />
+             <img src="/logo.png" alt="" />
             
            </a>
            <p className="mt-2 text-sm text-gray-500">Air plant banjo lyft occupy retro adaptogen indego</p>
@@ -29,43 +29,38 @@ const Footer =() =>{
              </nav>
            </div>
            <div className="lg:w-1/4 md:w-1/2 w-full px-4" bis_skin_checked="1">
-             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Services</h2>
              <nav className="list-none mb-10">
                <li>
-                 <a className="text-gray-600 hover:text-gray-800">First Link</a>
+                 <a className="text-gray-600 hover:text-gray-800">Quick Delivery</a>
                </li>
                <li>
-                 <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+                 <a className="text-gray-600 hover:text-gray-800">Premium Tshirts</a>
                </li>
                <li>
-                 <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-               </li>
-               <li>
-                 <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                 <a className="text-gray-600 hover:text-gray-800">Exciting Offers</a>
                </li>
              </nav>
            </div>
            <div className="lg:w-1/4 md:w-1/2 w-full px-4" bis_skin_checked="1">
-             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CUSTOMER SERVICES</h2>
              <nav className="list-none mb-10">
                <li>
-                 <a className="text-gray-600 hover:text-gray-800">First Link</a>
+                 <a className="text-gray-600 hover:text-gray-800">Contact Us</a>
                </li>
                <li>
-                 <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+                 <a className="text-gray-600 hover:text-gray-800">About Us</a>
                </li>
                <li>
-                 <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-               </li>
-               <li>
-                 <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                 <a className="text-gray-600 hover:text-gray-800">Return Policy</a>
                </li>
              </nav>
            </div>
            <div className="lg:w-1/4 md:w-1/2 w-full px-4" bis_skin_checked="1">
-             <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+             {/* <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">We Accept</h2> */}
              <nav className="list-none mb-10">
-               <li>
+               <img src="https://www.codeswear.com/pay.png" alt="" />
+               {/* <li>
                  <a className="text-gray-600 hover:text-gray-800">First Link</a>
                </li>
                <li>
@@ -76,7 +71,7 @@ const Footer =() =>{
                </li>
                <li>
                  <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-               </li>
+               </li> */}
              </nav>
            </div>
          </div>
