@@ -40,7 +40,7 @@ export default function Pay() {
     }
   return (
     <div>
-        <Script src={"http://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/eRMJIk88687155228380.js"}></Script>
+        <Script crossOrigin='anonymous' src={"http://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/eRMJIk88687155228380.js"}></Script>
         <button onClick={click}>sdfa</button>
     </div>
   )
