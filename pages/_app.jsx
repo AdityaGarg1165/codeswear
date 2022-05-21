@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import Topload from './toploader'
 import Navbar from './navbar'
-import Footer from './footer'
+// import Footer from './footer'
 import { useState,useEffect } from 'react'
 
 function MyApp({ Component, pageProps }) {
@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
   <Topload animation={top} />
   <Navbar subtotal={subtotal} update={setup} cdat={cdat}/>
   <Component updateT={uptop} time={settime} update={setup}{...pageProps} />
-  <Footer></Footer>
+  {/* <Footer></Footer> */}
   </>
 }
 
