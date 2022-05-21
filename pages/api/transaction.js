@@ -9,7 +9,6 @@ export default async function handler(req, res) {
     * You can get this utility from https://developer.paytm.com/docs/checksum/
     */
    const PaytmChecksum = require('paytmchecksum');
-   
    var paytmParams = {};
    
    paytmParams.body = {

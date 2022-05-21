@@ -56,44 +56,48 @@ const Checkout = () => {
                 <form method='POST' onSubmit={async(e)=>{
                     e.preventDefault()
                     if(state && name && address && city && state && phone && email){
-                        const oid = Math.floor(Math.random() * Date.now())
-                        const fet = await  fetch("/api/transaction",{method:"POST",body:JSON.stringify({"oid":oid,"sub":sub})})
-                        const json = await fet.json()
-                        console.log(json.txnToken)
+                        if(sub!=null){
+
+                            
+                            const oid = Math.floor(Math.random() * Date.now())
+                            const fet = await  fetch("/api/transaction",{method:"POST",body:JSON.stringify({"oid":oid,"sub":sub})})
+                            const json = await fet.json()
+                            console.log(json.txnToken)
                             var config = {
-                            "root": "",
-                            "flow": "DEFAULT",
-                            "data": {
-                            "orderId": oid, /* update order id */
-                            "token": json.txnToken, /* update token value */
-                            "tokenType": "TXN_TOKEN",
-                            "amount": sub /* update amount */
-                            },
-                            "handler": {
-                                "notifyMerchant": function(eventName,data){
-                                console.log("notifyMerchant handler function called");
-                                console.log("eventName => ",eventName);
-                                console.log("data => ",data);
+                                "root": "",
+                                "flow": "DEFAULT",
+                                "data": {
+                                    "orderId": oid, /* update order id */
+                                    "token": json.txnToken, /* update token value */
+                                    "tokenType": "TXN_TOKEN",
+                                    "amount": "1" /* update amount */
+                                },
+                                "handler": {
+                                    "notifyMerchant": function(eventName,data){
+                                        console.log("notifyMerchant handler function called");
+                                        console.log("eventName => ",eventName);
+                                        console.log("data => ",data);
+                                    } 
+                                }
+                            };
+                            
+                            if(window.Paytm && window.Paytm.CheckoutJS){
+                                // window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
+                                    // initialze configuration using init method 
+                                    window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+                                        // after successfully updating configuration, invoke JS Checkout
+                                        window.Paytm.CheckoutJS.invoke();
+                                    }).catch(function onError(error){
+                                        console.log("error => ",error);
+                                    });
                                 } 
                             }
-            };
-      
-                    if(window.Paytm && window.Paytm.CheckoutJS){
-                        // window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
-                            // initialze configuration using init method 
-                            window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
-                                // after successfully updating configuration, invoke JS Checkout
-                                window.Paytm.CheckoutJS.invoke();
-                            }).catch(function onError(error){
-                                console.log("error => ",error);
-                            });
-            } 
-                }
-                else{
-                    toast.error("Please fill out all the fields", {
-                        position: "top-left",
-                        autoClose: 5000,
-                        hideProgressBar: false,
+                        }
+                            else{
+                                toast.error("Please fill out all the fields", {
+                                    position: "top-left",
+                                    autoClose: 5000,
+                                    hideProgressBar: false,
                         closeOnClick: true,
                         pauseOnHover: true,
                         draggable: true,
