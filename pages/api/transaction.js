@@ -19,7 +19,7 @@ export default async function handler(req, res) {
      "orderId"       : JSON.parse(req.body).oid,
      "callbackUrl"   : "http://localhost:3000",
      "txnAmount"     : {
-       "value" : "1.00",
+       "value" : JSON.parse(req.body).sub,
        "currency"  : "INR",
       },
       "userInfo"      : {

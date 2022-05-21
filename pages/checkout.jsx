@@ -10,7 +10,7 @@ import { useEffect } from 'react'
 const Checkout = () => {
     const ref = useRef()
     const [city,setcit] = useState(undefined)
-    const [sub,setsub] = useState(undefined)
+    const [sub,setsub] = useState(0)
     const [address,setaddress] = useState(undefined)
     const [email,setemail] = useState(undefined)
     const [phone,setphone] = useState(undefined)
@@ -57,7 +57,7 @@ const Checkout = () => {
                     e.preventDefault()
                     if(state && name && address && city && state && phone && email){
                         const oid = Math.floor(Math.random() * Date.now())
-                        const fet = await  fetch("/api/transaction",{method:"POST",body:JSON.stringify({"oid":oid})})
+                        const fet = await  fetch("/api/transaction",{method:"POST",body:JSON.stringify({"oid":oid,"sub":sub})})
                         const json = await fet.json()
                         console.log(json.txnToken)
                             var config = {
@@ -67,7 +67,7 @@ const Checkout = () => {
                             "orderId": oid, /* update order id */
                             "token": json.txnToken, /* update token value */
                             "tokenType": "TXN_TOKEN",
-                            "amount": "1200" /* update amount */
+                            "amount": sub /* update amount */
                             },
                             "handler": {
                                 "notifyMerchant": function(eventName,data){
