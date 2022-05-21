@@ -10,10 +10,10 @@ export default async function handler(req, res) {
     */
    const PaytmChecksum = require('paytmchecksum');
    var paytmParams = {};
-   
+   const mid = "eRMJIk88687155228380"
    paytmParams.body = {
      "requestType"   : "Payment",
-     "mid"           : process.env.NEXT_PUBLIC_PAYTM_MID,
+     "mid"           : mid,
      "websiteName"   : "codeswear",
      "orderId"       : JSON.parse(req.body).oid,
      "callbackUrl"   : "http://codeswear-rho.vercel.app",
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     * Generate checksum by parameters we have in body
     * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
     */
-   const checksum = await PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), process.env.PAYTM_KEY)
+   const checksum = await PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "mZSoDbsM0%o_jy%q")
    
    paytmParams.head = {
      "signature"    : checksum
@@ -42,6 +42,7 @@ export default async function handler(req, res) {
       return new Promise((reso,rej)=>{
         
         
+        
         var options = {
           
           /* for Staging */
@@ -51,7 +52,7 @@ export default async function handler(req, res) {
           // hostname: 'securegw.paytm.in',
           
           port: 443,
-          path: `/theia/api/v1/initiateTransaction?mid=${process.env.NEXT_PUBLIC_PAYTM_MID}&orderId=${JSON.parse(req.body).oid}`,
+          path: `/theia/api/v1/initiateTransaction?mid=${mid}&orderId=${JSON.parse(req.body).oid}`,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
