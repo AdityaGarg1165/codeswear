@@ -26,7 +26,7 @@ const Checkout = () => {
     const pincode = async()=>{
         const value = ref.current.value
         if(value.length === 6){
-            const post = await fetch("http://localhost:3000/api/pincode",{method:"post",body:JSON.stringify(value)})
+            const post = await fetch("/api/pincode",{method:"post",body:JSON.stringify(value)})
             const res = await post.json()
             console.log(res)
             setcit(res["city"])
@@ -37,7 +37,6 @@ const Checkout = () => {
 
     return (
         <>
-        <Script crossOrigin='' src='https://checkout.razorpay.com/v1/checkout.js'></Script>
         <ToastContainer
       position="top-left"
       autoClose={5000}
