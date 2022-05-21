@@ -26,7 +26,7 @@ const Checkout = () => {
     const pincode = async()=>{
         const value = ref.current.value
         if(value.length === 6){
-            const post = await fetch("http://localhost:3000/api/pincode",{method:"post",body:JSON.stringify(value)})
+            const post = await fetch("/api/pincode",{method:"post",body:JSON.stringify(value)})
             const res = await post.json()
             console.log(res)
             setcit(res["city"])
@@ -54,36 +54,50 @@ const Checkout = () => {
            
             <h1 className="font-bold text-3xl my-8 text-center">Checkout</h1>
             <h2 className="font-semibold text-xl">1. Delivery Details</h2>
-                <form method='POST' onSubmit={(e)=>{
+                <form method='POST' onSubmit={async(e)=>{
                     e.preventDefault()
                     if(state && name && address && city && state && phone && email){
-
-                        var options = {
-                            "key": "rzp_live_dGbruH5EDyqumR", // Enter the Key ID generated from the Dashboard
-                        "amount": localStorage.getItem("price") * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-                        "currency": "INR",
-                        "name": "Acme Corp",
-                        "description": "Test Transaction",
-                        "image": "http://localhost:3000/logo1.png",
-                        "handler": function (response){
-                            alert(response.razorpay_payment_id);
-                            alert(response.razorpay_order_id);
-                            alert(response.razorpay_signature)
-                        },
-                        "prefill": {
-                            "name": "",
-                            "email": "",
-                            "contact": ""
-                        },
-                        "notes": {
-                            "address": ""
-                        },
-                        "theme": {
-                            "color": "#00BAF2"
-                        }
-                    };
-                    const pay = new window.Razorpay(options)
-                    pay.open()
+                        const oid = Math.floor(Math.random() * Date.now())
+                        const data = {oid}
+                        // const fet = await  fetch("https://codeswear.web.app/api/transaction",{method:"POST",body:JSON.stringify({"oid":oid}),headers:{'Content-Type':'applicatio/json'}})
+                        const fet = await fetch('https://codeswear.web.app/api/transaction', {
+                            method: 'POST', // or 'PUT'
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(data),
+                        })
+                        const json = await fet.json()
+                        console.log(json)
+                        console.log(json.txnToken)
+                            var config = {
+                              "root": "",
+                              "flow": "DEFAULT",
+                              "data": {
+                              "orderId": oid, /* update order id */
+                              "token": json.txnToken, /* update token value */
+                              "tokenType": "TXN_TOKEN",
+                              "amount": "1.00" /* update amount */
+                              },
+                              "handler": {
+                                "notifyMerchant": function(eventName,data){
+                                  console.log("notifyMerchant handler function called");
+                                  console.log("eventName => ",eventName);
+                                  console.log("data => ",data);
+                                } 
+                              }
+                            };
+                      
+                            if(window.Paytm && window.Paytm.CheckoutJS){
+                                // window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
+                                    // initialze configuration using init method 
+                                    window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+                                        // after successfully updating configuration, invoke JS Checkout
+                                        window.Paytm.CheckoutJS.invoke();
+                                    }).catch(function onError(error){
+                                        console.log("error => ",error);
+                                    });
+                            } 
                 }
                 else{
                     toast.error("Please fill out all the fields", {
@@ -114,6 +128,7 @@ const Checkout = () => {
                 </div>
 
             </div>
+            <Script crossOrigin='anonymous' src={"https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/eRMJIk88687155228380.js"}></Script>
                 <div className=" mb-4 ml-12">
                     <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
 
