@@ -64,7 +64,6 @@ const Checkout = () => {
                             const oid = Math.floor(Math.random() * Date.now())
                             const fet = await  fetch("/api/transaction",{method:"POST",body:JSON.stringify({"oid":oid,"sub":sub})})
                             const json = await fet.json()
-                            console.log(json.txnToken)
                             var config = {
                                 "root": "",
                                 "flow": "DEFAULT",
