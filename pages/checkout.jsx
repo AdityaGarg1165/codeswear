@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 
 const Checkout = () => {
     const ref = useRef()
+    const [payload,setpayload] = useState(undefined)
     const [city,setcit] = useState(undefined)
     const [sub,setsub] = useState(0)
     const [address,setaddress] = useState(undefined)
@@ -57,6 +58,7 @@ const Checkout = () => {
                     e.preventDefault()
                     if(state && name && address && city && state && phone && email){
                         if(sub!=null){
+                            setpayload("Loading")
 
                             
                             const oid = Math.floor(Math.random() * Date.now())
@@ -158,6 +160,7 @@ const Checkout = () => {
                 </div>
 
             </div>  
+            <h1 className='ml-18 -mt-6 pt-2 p-4'>{payload?"Loading paytm payment gateway...":null}</h1>
             <button className="flex ml-auto ml-16 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" onClick={initiate}>{'Pay' + ' ' + '₹' + sub}</button>
             </form>
             </div>
