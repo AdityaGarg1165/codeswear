@@ -60,7 +60,7 @@ const Checkout = () => {
                         const oid = Math.floor(Math.random() * Date.now())
                         const data = {oid}
                         // const fet = await  fetch("https://codeswear.web.app/api/transaction",{method:"POST",body:JSON.stringify({"oid":oid}),headers:{'Content-Type':'applicatio/json'}})
-                        const fet = await fetch('https://codeswear.web.app/api/transaction', {
+                        const fet = await fetch('/api/transaction', {
                             method: 'POST', // or 'PUT'
                             headers: {
                                 'Content-Type': 'application/json',
