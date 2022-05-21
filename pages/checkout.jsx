@@ -79,6 +79,9 @@ const Checkout = () => {
                                         console.log("notifyMerchant handler function called");
                                         console.log("eventName => ",eventName);
                                         console.log("data => ",data);
+                                        if(data === 'App closed from the header icon'){
+                                            setpayload(undefined)
+                                        }
                                     } 
                                 }
                             };
