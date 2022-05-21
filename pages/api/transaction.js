@@ -16,7 +16,7 @@ export default async function handler(req, res) {
      "mid"           : "eRMJIk88687155228380",
      "websiteName"   : "codeswear",
      "orderId"       : JSON.parse(req.body).oid,
-     "callbackUrl"   : "http://localhost:3000",
+     "callbackUrl"   : "http://codeswear-rho.vercel.app",
      "txnAmount"     : {
        "value" : JSON.parse(req.body).sub,
        "currency"  : "INR",
