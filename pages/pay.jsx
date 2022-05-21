@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 export default function Pay() {
     const click = async()=>{
         const oid = Math.floor(Math.random() * Date.now())
-        const fet = await  fetch("http://localhost:3000/api/transaction",{method:"POST",body:JSON.stringify({"oid":oid})})
+        const fet = await  fetch("/api/transaction",{method:"POST",body:JSON.stringify({"oid":oid})})
         const json = await fet.json()
         console.log(json.txnToken)
             var config = {

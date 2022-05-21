@@ -26,7 +26,7 @@ const Checkout = () => {
     const pincode = async()=>{
         const value = ref.current.value
         if(value.length === 6){
-            const post = await fetch("/api/pincode",{method:"post",body:JSON.stringify(value)})
+            const post = await fetch("http://localhost:3000/api/pincode",{method:"post",body:JSON.stringify(value)})
             const res = await post.json()
             console.log(res)
             setcit(res["city"])
@@ -58,17 +58,15 @@ const Checkout = () => {
                     e.preventDefault()
                     if(state && name && address && city && state && phone && email){
                         const oid = Math.floor(Math.random() * Date.now())
-                        const data = {oid}
                         // const fet = await  fetch("https://codeswear.web.app/api/transaction",{method:"POST",body:JSON.stringify({"oid":oid}),headers:{'Content-Type':'applicatio/json'}})
-                        const fet = await fetch('/api/transaction', {
+                        const fet = await fetch('http://localhost:3000/api/transaction', {
                             method: 'POST', // or 'PUT'
                             headers: {
                                 'Content-Type': 'application/json',
                             },
-                            body: JSON.stringify(data),
+                            body: JSON.stringify({oid:oid}),
                         })
                         const json = await fet.json()
-                        console.log(json)
                         console.log(json.txnToken)
                             var config = {
                               "root": "",
