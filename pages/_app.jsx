@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
     setc(cartdata)
   },[arr,cartupdate])
   return <>
-  <Topload animation={top} />
+  {/* <Topload animation={top} /> */}
   <Navbar subtotal={subtotal} update={setup} cdat={cdat}/>
   <Component updateT={uptop} time={settime} update={setup}{...pageProps} />
   {/* <Footer></Footer> */}
