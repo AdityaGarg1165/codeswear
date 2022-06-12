@@ -19,21 +19,21 @@ export default function Home({ updateTop, time }) {
       <section className="text-gray-600 body-font md:ml-10 -ml-72">
         <div className="container ml-44 px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 animate-[load_1.5s_ease-in-out] ml-28">
-                <section class="text-gray-600 body-font">
-                  <div class="container px-5 py-24 mx-auto">
-                    <div class="flex flex-wrap -m-4">
+                <section className="text-gray-600 body-font">
+                  <div className="container px-5 py-24 mx-auto">
+                    <div className="flex flex-wrap -m-4">
             {data && data.map((item) => (
               <Link key={item.id} href={`/product/${item.name}`}>
           
                       
-                      <div class="p-4 md:w-1/3">
-                        <div class="h-full border-2 w-60 md:w-46 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                          <img class="lg:h-48 md:h-36 w-full object-cover object-center" src={item.photourl} alt="blog" />
-                          <div class="p-6">
+                      <div className="p-4 md:w-1/3">
+                        <div className="h-full border-2 w-60 md:w-46 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                          <img className="lg:h-48 md:h-36 w-full object-cover object-center" src={item.photourl} alt="blog" />
+                          <div className="p-6">
                             {/* <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2> */}
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{item.name}</h1>
+                            <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{item.name}</h1>
                             {/* <p class="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p> */}
-                            <div class="flex items-center flex-wrap ">
+                            <div className="flex items-center flex-wrap ">
                               {/* <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Buy */}
                               {/* </a> */}
                               {/* <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
