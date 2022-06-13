@@ -40,6 +40,7 @@ export default function Navbar({update,cdat,subtotal}) {
     }
     
   }
+  useEffect(()=>{},[])
   useEffect(()=>{
     try{
       
