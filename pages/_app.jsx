@@ -51,14 +51,14 @@ function MyApp({ Component, pageProps }) {
     },[])
   },[])
   return <>
+    <Navbar subtotal={subtotal} update={setup} cdat={cdat}/>
    <LoadingBar
         color='#4f46e5'
         progress={progress}
-        delay={100}
+        waitingTime={300}
         onLoaderFinished={() => setProgress(0)}
       />
   {/* <Topload animation={top} /> */}
-  <Navbar subtotal={subtotal} update={setup} cdat={cdat}/>
   <Component updateT={uptop} time={settime} update={setup}{...pageProps} />
   {/* <Footer></Footer> */}
   </>
