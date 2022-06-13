@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {addDoc, collection, getFirestore} from 'firebase/firestore'
+import {addDoc, collection, doc, getFirestore, setDoc} from 'firebase/firestore'
 import { LockClosedIcon } from '@heroicons/react/solid'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,7 +38,7 @@ export default function Example() {
       
     }
     catch{
-      addDoc(userscollection,{
+      setDoc(doc(userscollection,email),{
         email:email,
         password:CryptoJS.AES.encrypt(password,'khotakhota').toString()
       })
@@ -67,7 +67,7 @@ pauseOnFocusLoss
 draggable
 pauseOnHover
 />
-      <div className="min-h my-32 -full flex items-center ml-login justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h my-32 -full flex items-center absolute ml-login justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign up for an account</h2>

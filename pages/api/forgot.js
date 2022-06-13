@@ -7,7 +7,7 @@ import {app} from '../firebase'
 export default async function handler(req, res) {
     const body = JSON.parse(req.body)
     const token = jsonwebtoken.sign({email:body.email},'khotamridulkey')
-    const passwordlink = `http://localhost:3000/forgot/?token=${token}`
+    const passwordlink = `https://codeswear-rho.vercel.app/forgot/?token=${token}`
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
       to: body.email, // list of receivers
       subject: "Your password at codeswear-rho.vercel.app", // Subject line
     //   text: "", // plain text body
-      html: `<b>We heard that you forgot your password<br>Reset your password at the following link<br>${passwordlink}</b>`, // html body
+      html: `<b>We heard that you forgot your password<br>Reset your password at the following link<br>${passwordlink}</b>`, // html 
     });
     res.status(200).json({ name: 'John Doe' })
   }

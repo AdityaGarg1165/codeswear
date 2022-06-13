@@ -2,6 +2,7 @@ import React from 'react'
 import Image from'next/image'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {AiFillCloseCircle} from 'react-icons/ai'
+import {RiAccountCircleLine} from 'react-icons/ri'
 import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,12 +13,13 @@ let refresh = []
 export default function Navbar({update,cdat,subtotal}) {
   
   const [name,set] = useState(null)
+  const dropref = useRef()
   const cartref = useRef()
   // useEffect(()=>{toggle()},[])
   const toggle = () => {
     if(cartref.current.classList.contains('translate-x-full')){
       cartref.current.classList.remove('translate-x-full')
-      cartref.current.classList.remove('hidden')
+      // cartref.current.classList.remove('hidden')
       update(Math.random().toString())
       
     }
@@ -27,7 +29,7 @@ export default function Navbar({update,cdat,subtotal}) {
   }
   const cross = () => {
     cartref.current.classList.add('translate-x-full')
-    cartref.current.classList.add('hidden')
+    // cartref.current.classList.add('hidden')
     update(Math.random().toString())
   }
   const handleclick = () =>{
@@ -75,7 +77,21 @@ export default function Navbar({update,cdat,subtotal}) {
 
         {/* <a className="mr-5 ml-auto hover:fill-indigo-600 font-bold cursor-pointer">{name ? 'Welcome' + ' ' + '@' + name : null}</a> */}
       </nav>
+        {/* <div className='flex'> */}
+        <RiAccountCircleLine className='text-3xl ml-nave cursor-pointer absolute -mt-2' onClick={()=>{dropref.current.classList.toggle('hidden')}}/>
+        {name &&
+        <div className='dropdown pl-8 pr-8 shadow-xl w-46 pt-2 h-40 hidden absolute bg-white top-16 right-8 rounded-xl' ref={dropref}>
+            <ol className='space-y-2'>
+              <li>Hello @{name}</li>
+              <Link href={'/changepassword'}>
+              <li className='cursor-pointer'>Change Password</li>
+              </Link>
+              <li className='cursor-pointer'>Change Default address</li>
+              <li className='cursor-pointer'>Settings</li>
+            </ol>
+        </div>}
       <AiOutlineShoppingCart onClick={toggle} className='text-3xl cursor-pointer ml-navc -mt-16' />
+        {/* </div> */}
       <div ref={cartref} className="cart transition-transform translate-x-full transform bg-indigo-300 absolute top-0 right-0 p-10">
         <h2 className='font-bold text-xl'>Shopping Cart</h2>
         <span className='absolute top-2 right-2'>
