@@ -82,7 +82,7 @@ module.exports = {
       0: '0px',
       'nav':'208vh',
       navb:'80vw',
-      navc:'90%',
+      navc:'95%',
       0.5: '0.125rem',
       1: '0.25rem',
       1.5: '0.375rem',
