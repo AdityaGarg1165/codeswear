@@ -77,7 +77,8 @@ module.exports = {
     },
     spacing: {
       px: '1px',
-      'login':'-3vh',
+      login:'37vw',
+      smlogin:'27vw',
       0: '0px',
       'nav':'208vh',
       navb:'80vw',
