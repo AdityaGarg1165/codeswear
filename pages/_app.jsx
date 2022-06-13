@@ -2,16 +2,20 @@ import '../styles/globals.css'
 import Topload from './toploader'
 import Navbar from './navbar'
 // import Footer from './footer'
+import LoadingBar from 'react-top-loading-bar'
 import { useState,useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }) {
   const [up,sp] = useState('')
   let [arr,setarr] = useState('')
+  const [progress,setProgress] = useState(0)
   const [top,uptop]= useState('')
   const [cdat,setc] = useState([])
   const [time,settime] = useState('')
   const [cartupdate,setup] = useState([])
   const cartdata = []
+  const router = useRouter()
   const pricedata = []
   let [subtotal,settot] = useState(0);
   useEffect(()=>{
@@ -41,7 +45,18 @@ function MyApp({ Component, pageProps }) {
     }
     setc(cartdata)
   },[arr,cartupdate])
+  useEffect(()=>{
+    router.events.on('routeChangeComplete',()=>{
+      setProgress(100)
+    },[])
+  },[])
   return <>
+   <LoadingBar
+        color='#4f46e5'
+        progress={progress}
+        delay={100}
+        onLoaderFinished={() => setProgress(0)}
+      />
   {/* <Topload animation={top} /> */}
   <Navbar subtotal={subtotal} update={setup} cdat={cdat}/>
   <Component updateT={uptop} time={settime} update={setup}{...pageProps} />
