@@ -78,7 +78,7 @@ export default function Navbar({update,cdat,subtotal}) {
         {/* <a className="mr-5 ml-auto hover:fill-indigo-600 font-bold cursor-pointer">{name ? 'Welcome' + ' ' + '@' + name : null}</a> */}
       </nav>
         {/* <div className='flex'> */}
-        <RiAccountCircleLine className='text-3xl ml-nave cursor-pointer absolute -mt-2' onClick={()=>{dropref.current.classList.toggle('hidden')}}/>
+        <RiAccountCircleLine className='text-3xl ml-nave md:ml-navf cursor-pointer absolute -mt-2' onClick={()=>{dropref.current.classList.toggle('hidden')}}/>
         {name &&
         <div className='dropdown pl-8 pr-8 shadow-xl w-46 pt-2 h-40 hidden absolute bg-white top-16 right-8 rounded-xl' ref={dropref}>
             <ol className='space-y-2'>

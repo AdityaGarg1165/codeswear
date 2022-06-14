@@ -85,6 +85,7 @@ module.exports = {
       navc:'93%',
       navd:'40vw',
       nave:'90%',
+      navf:'95%',
       0.5: '0.125rem',
       1: '0.25rem',
       1.5: '0.375rem',
