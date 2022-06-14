@@ -60,7 +60,7 @@ export default function Navbar({update,cdat,subtotal}) {
     <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link href={'/'}>
       <a className="flex title-font font-small items-center text-white mb-4 md:mb-0">
-                <img src={'/logo.png'} className='-mt-4 w-64 -ml-20' width="200" height="70"></img>
+                <img src={'/logo.png'} className='-mt-4 w-64 -ml-12' width="200" height="70"></img>
       <button onClick={handleclick} className="inline-flex md:ml-navb ml-24 -mt-2 absolute items-center border-0 py-1 px-3 focus:outline-none bg-indigo-600 mx-12 rounded text-white mt-4 md:mt-0">{name ? 'Logout' : 'Login'}
         {/* <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24"> */}
           {/* <path d="M5 12h14M12 5l7 7-7 7"></path> */}
