@@ -155,6 +155,7 @@ export default function Login() {
                 </span>
                 Sign in
               </button>
+              <span><a><Link href={'/forgot'}>Forgot Password?</Link></a></span>
             </div>
           </form>
         </div>

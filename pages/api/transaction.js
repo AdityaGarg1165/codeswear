@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     */
    const PaytmChecksum = require('paytmchecksum');
    var paytmParams = {};
-   const mid = "eRMJIk88687155228380"
+   const mid = process.env.NEXT_PUBLIC_PAYTM_MID
    paytmParams.body = {
      "requestType"   : "Payment",
      "mid"           : mid,
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     * Generate checksum by parameters we have in body
     * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
     */
-   const checksum = await PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), "mZSoDbsM0%o_jy%q")
+   const checksum = await PaytmChecksum.generateSignature(JSON.stringify(paytmParams.body), process.env.PAYTM_M_KEY)
    
    paytmParams.head = {
      "signature"    : checksum
@@ -46,10 +46,10 @@ export default async function handler(req, res) {
         var options = {
           
           /* for Staging */
-          hostname: 'securegw-stage.paytm.in',
+          // hostname: 'securegw-stage.paytm.in',
           
           /* for Production */
-          // hostname: 'securegw.paytm.in',
+          hostname: 'securegw.paytm.in',
           
           port: 443,
           path: `/theia/api/v1/initiateTransaction?mid=${mid}&orderId=${JSON.parse(req.body).oid}`,

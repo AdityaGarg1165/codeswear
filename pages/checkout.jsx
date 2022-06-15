@@ -126,7 +126,7 @@ const Checkout = () => {
                 </div>
 
             </div>
-            <Script crossOrigin='anonymous' src={`https://securegw-stage.paytm.in/merchantpgpui/checkoutjs/merchants/eRMJIk88687155228380.js`}></Script>
+            <Script crossOrigin='anonymous' src={`https://securegw.paytm.in/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}></Script>
                 <div className=" mb-4 ml-12">
                     <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
 
