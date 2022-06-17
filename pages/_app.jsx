@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import Footer from './Footer'
 import Topload from './toploader'
 import Navbar from './navbar'
 // import Footer from './footer'
@@ -60,7 +61,7 @@ function MyApp({ Component, pageProps }) {
       />
   {/* <Topload animation={top} /> */}
   <Component updateT={uptop} time={settime} update={setup}{...pageProps} />
-  {/* <Footer></Footer> */}
+  <Footer></Footer>
   </>
 }
 

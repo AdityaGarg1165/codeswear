@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 const Footer =() =>{
     return(
        <div><footer className="text-gray-600 body-font">
@@ -49,7 +50,9 @@ const Footer =() =>{
                  <a className="text-gray-600 hover:text-gray-800">Contact Us</a>
                </li>
                <li>
+                 <Link href={'/about'}>
                  <a className="text-gray-600 hover:text-gray-800">About Us</a>
+                 </Link>
                </li>
                <li>
                  <a className="text-gray-600 hover:text-gray-800">Return Policy</a>

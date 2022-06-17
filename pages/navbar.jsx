@@ -73,6 +73,7 @@ export default function Navbar({update,cdat,subtotal}) {
         <Link href = {'/Hoodies'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">Hoodies</a></Link>
         <Link href = {'/Mugs'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">Mugs</a></Link>
         <Link href = {'/Shoes'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">Shoes</a></Link>
+        {/* <Link href = {'/Tshirts'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">About</a></Link> */}
         {/* <Link href = {'/about'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">About us</a></Link> */}
 
         {/* <a className="mr-5 ml-auto hover:fill-indigo-600 font-bold cursor-pointer">{name ? 'Welcome' + ' ' + '@' + name : null}</a> */}

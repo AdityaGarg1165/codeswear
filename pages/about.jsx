@@ -15,7 +15,7 @@ const About = () =>{
           <img alt="team" className="w-16 h-16 bg-gray-100 object-cover animate-[load_2s_ease-in-out] object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/80x80"/>
           <div className="flex-grow">
             <h2 className="text-gray-900 title-font font-medium animate-[load_2s_ease-in-out]">Yash Dagar</h2>
-            <p className="text-gray-500">UI Designer</p>
+            <p className="text-gray-500">Programmer</p>
           </div>
         </div>
       </div>
