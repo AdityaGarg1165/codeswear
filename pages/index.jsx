@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Topload from './toploader'
 import { FaTshirt } from 'react-icons/fa'
 import { MdOutlineDeliveryDining } from 'react-icons/md'
 import { AiFillDollarCircle } from 'react-icons/ai'
@@ -14,7 +13,7 @@ export default function Home({ updateTop, time }) {
   const [data] = useCollectionData(limited)
   return (
     <div className='justify-center'>
-      <img src="/home.jpg" width={2200} className='animate-[load_1s_ease-in-out] md:pt-20 pt-32' alt="" />
+      <img src="/home.png" width={2200} className='animate-[load_1s_ease-in-out] md:pt-20 pt-32' alt="" />
       <h1 className='text-4xl ml-4 font-medium my-12 animate-[load_1s_ease-in-out]'>Our Latest Collection</h1>
       <section className="text-gray-600 body-font md:ml-10 -ml-72">
         <div className="container ml-44 px-5 py-24 mx-auto">

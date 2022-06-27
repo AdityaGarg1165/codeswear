@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import Footer from './Footer'
+import Head from 'next/head'
 import Topload from './toploader'
 import Navbar from './navbar'
 // import Footer from './footer'
@@ -52,6 +53,10 @@ function MyApp({ Component, pageProps }) {
     },[])
   },[])
   return <>
+  <Head>
+    <title>Clothingify</title>
+    <meta name="description" content="Clothingify is a online ecommerce store which sells cloths ar cheapest rate and fast delivery"></meta>
+  </Head>
     <Navbar subtotal={subtotal} update={setup} cdat={cdat}/>
    <LoadingBar
         color='#4f46e5'

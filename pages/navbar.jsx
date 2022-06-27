@@ -52,7 +52,7 @@ export default function Navbar({update,cdat,subtotal}) {
     }
   },[])
   return (
-    <header id='' className="text-black animate-[load_2s_ease-in-out] fixed w-full bg-white shadow-xl body-font">
+    <header id='' className="text-black h-20 animate-[load_2s_ease-in-out] fixed w-full bg-white shadow-xl body-font">
     <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link href={'/'}>
       <a className="flex title-font font-small items-center text-white mb-4 md:mb-0">
