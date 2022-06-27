@@ -14,7 +14,7 @@
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "cryptojs": "^2.5.3",
-    "firebase": "^9.8.3",
+    "firebase": "^9.8.4",
     "firebase-cli": "^1.2.0",
     "firebase-tools": "^10.7.2",
     "heroicons": "^1.0.6",
@@ -28,7 +28,7 @@
     "react-dom": "18.1.0",
     "react-firebase-hooks": "^5.0.3",
     "react-icons": "^4.4.0",
-    "react-toastify": "^8.2.0",
+    "react-toastify": "^9.0.5",
     "react-top-loading-bar": "^2.1.0"
   },
   "devDependencies": {
@@ -36,6 +36,6 @@
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
     "postcss": "^8.4.13",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.1.4"
   }
 }

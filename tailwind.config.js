@@ -82,7 +82,7 @@ module.exports = {
       0: '0px',
       'nav':'208vh',
       navb:'80vw',
-      navc:'93%',
+      navc:'99%',
       navd:'40vw',
       nave:'90%',
       navf:'90%',
@@ -120,7 +120,8 @@ module.exports = {
       80: '20rem',
       96: '24rem',
       110: '29rem',
-      "fullp":'100%'
+      "fullp":'100%',
+      "fullf":'100vh'
     },
     animation: {
       none: 'none',

@@ -1,8 +1,6 @@
 import React from 'react'
-import Image from'next/image'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {AiFillCloseCircle} from 'react-icons/ai'
-import {RiAccountCircleLine} from 'react-icons/ri'
 import Link from 'next/link'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,13 +11,12 @@ let refresh = []
 export default function Navbar({update,cdat,subtotal}) {
   
   const [name,set] = useState(null)
-  const dropref = useRef()
   const cartref = useRef()
-  // useEffect(()=>{toggle()},[])
+  useEffect(()=>{toggle()},[])
   const toggle = () => {
     if(cartref.current.classList.contains('translate-x-full')){
       cartref.current.classList.remove('translate-x-full')
-      // cartref.current.classList.remove('hidden')
+      cartref.current.classList.remove('hidden')
       update(Math.random().toString())
       
     }
@@ -29,7 +26,7 @@ export default function Navbar({update,cdat,subtotal}) {
   }
   const cross = () => {
     cartref.current.classList.add('translate-x-full')
-    // cartref.current.classList.add('hidden')
+    cartref.current.classList.add('hidden')
     update(Math.random().toString())
   }
   const handleclick = () =>{
@@ -42,7 +39,6 @@ export default function Navbar({update,cdat,subtotal}) {
     }
     
   }
-  // useEffect(()=>{},[])
   useEffect(()=>{
     try{
       
@@ -56,47 +52,31 @@ export default function Navbar({update,cdat,subtotal}) {
     }
   },[])
   return (
-    <header id='' className="text-black h-32 md:h-20 animate-[load_2s_ease-in-out] bg-white shadow-xl body-font w-full fixed z-40">
+    <header id='' className="text-black animate-[load_2s_ease-in-out] fixed w-full bg-white shadow-xl body-font">
     <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link href={'/'}>
       <a className="flex title-font font-small items-center text-white mb-4 md:mb-0">
-                <img src={'/logo.png'} className='-mt-4 w-64 -ml-12' width="200" height="70"></img>
-      <button onClick={handleclick} className="inline-flex md:ml-navb ml-24 -mt-2 absolute items-center border-0 py-1 px-3 focus:outline-none bg-indigo-600 mx-12 rounded text-white mt-4 md:mt-0">{name ? 'Logout' : 'Login'}
-        {/* <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24"> */}
-          {/* <path d="M5 12h14M12 5l7 7-7 7"></path> */}
-        {/* </svg> */}
-      </button>
+        <img src={'/logo.png'} className='-mt-4' width="200" height="70"></img>
       </a>
         </Link>
-      <nav className="md:ml-8 flex md:flex-wrap  items-center text-base justify-center">
-        <Link href = {'/Tshirts'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">Tshirts</a></Link>
-        <Link href = {'/Hoodies'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">Hoodies</a></Link>
-        <Link href = {'/Mugs'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">Mugs</a></Link>
-        <Link href = {'/Shoes'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">Shoes</a></Link>
-        {/* <Link href = {'/Tshirts'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">About</a></Link> */}
-        {/* <Link href = {'/about'}><a className="mr-5 hover:text-slate-600 md:font-bold cursor-pointer">About us</a></Link> */}
+      <nav className="md:ml-8 flex flex-wrap items-center text-base justify-center">
+        <Link href = {'/Tshirts'}><a className="mr-5 hover:text-slate-600 font-bold cursor-pointer">Tshirt</a></Link>
+        <Link href = {'/Hoodies'}><a className="mr-5 hover:text-slate-600 font-bold cursor-pointer">Hoodies</a></Link>
+        <Link href = {'/Mugs'}><a className="mr-5 hover:text-slate-600 font-bold cursor-pointer">Mugs</a></Link>
+        <Link href = {'/Shoes'}><a className="mr-5 hover:text-slate-600 font-bold cursor-pointer">Shoes</a></Link>
+        <Link href = {'/about'}><a className="mr-5 hover:text-slate-600 font-bold cursor-pointer">About us</a></Link>
 
         {/* <a className="mr-5 ml-auto hover:fill-indigo-600 font-bold cursor-pointer">{name ? 'Welcome' + ' ' + '@' + name : null}</a> */}
       </nav>
-        {/* <div className='flex'> */}
-        <RiAccountCircleLine className='text-3xl ml-nave md:ml-navf cursor-pointer absolute' onClick={()=>{dropref.current.classList.toggle('hidden')}}/>
-        {name &&
-        <div className='dropdown pl-8 pr-8 shadow-xl w-46 pt-2 h-40 hidden absolute bg-white top-16 right-8 rounded-xl' ref={dropref}>
-            <ol className='space-y-2'>
-              <li>Hello @{name}</li>
-              <Link href={'/changepassword'}>
-              <li className='cursor-pointer'>Change Password</li>
-              </Link>
-              <li className='cursor-pointer'>Change Default address</li>
-              <li className='cursor-pointer'>Settings</li>
-            </ol>
-        </div>}
-      <AiOutlineShoppingCart onClick={toggle} className='text-3xl cursor-pointer ml-navc -mt-16' />
-        {/* </div> */}
+      <button onClick={handleclick} className="inline-flex ml-auto items-center border-0 py-1 px-3 focus:outline-none bg-indigo-600 mx-12 rounded text-white mt-4 md:mt-0">{name ? 'Logout' : 'Login'}
+        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+      <AiOutlineShoppingCart onClick={toggle} className='text-3xl cursor-pointer -mt-8 md:mt-0' />
       <div ref={cartref} className="cart transition-transform translate-x-full transform bg-indigo-300 absolute top-0 right-0 p-10">
         <h2 className='font-bold text-xl'>Shopping Cart</h2>
-        <span className='absolute top-2 right-2'>
-        <AiFillCloseCircle onClick={cross} className='cursor-pointer' size={20}/></span>
+        <span className='absolute top-2 right-2'><AiFillCloseCircle onClick={cross} className='cursor-pointer' size={20}/></span>
         <ol>
           {cdat && cdat.map((item)=>(
             
